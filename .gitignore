@@ -38,4 +38,4 @@ bower.json
 /writeup/*.aux
 /writeup/*.synctex.gz
 /writeup/*.log
-
+/writeup/*.out
