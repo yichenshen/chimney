@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Errands</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @errands.each do |errand| %>
+      <tr>
+        <td><%= errand.title %></td>
+        <td><%= errand.content %></td>
+        <td><%= link_to 'Show', errand %></td>
+        <td><%= link_to 'Edit', edit_errand_path(errand) %></td>
+        <td><%= link_to 'Destroy', errand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Errand', new_errand_path %>
