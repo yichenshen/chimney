@@ -13,5 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
 //= require materialize-sprockets
 //= require_tree .
+
+
+$( document ).ready(function() {
+	// Initialize collapse button
+	$(".menu-btn").sideNav();
+	// Initialize collapsible
+		$('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+});

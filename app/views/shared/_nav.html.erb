@@ -1,15 +1,23 @@
 <nav class="green lighten-1">
 	<div class="nav-wrapper">
-				<%= link_to raw('Chimney'), '/', class: "brand-logo center"%>
-      <ul class="left">
-        <li>
-          <a href="#" data-activates="slide-out" class="menu-btn"><i class="mdi-navigation-menu"></i></a>
-        </li>
-  		</ul>
-  		<ul class="right">
-        <li>
-          <%= link_to raw("<i class=\"mdi-content-add\"></i>"), new_errand_path %>
-        </li>
-  		</ul>
+		<%= link_to raw('Chimney'), '/', class: "brand-logo center"%>
+    <ul class="left">
+      <li>
+        <a href="#" data-activates="slide-out" class="menu-btn"><i class="mdi-navigation-menu"></i></a>
+      </li>
+		</ul>
+		<ul class="right">
+      <li>
+        <%= link_to raw("<i class=\"mdi-content-add\"></i>"), new_errand_path %>
+      </li>
+		</ul>
+
+    <ul id="slide-out" class="side-nav collapsible">
+      <li>
+      <%= link_to raw("<i class=\"mdi-action-assignment left\"></i><b>TODOs</b>"), 
+          errands_path,
+          class: "waves-effect waves-teal" %>
+      </li>
+    </ul>
 	</div>
 </nav>
