@@ -1,14 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @errand.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @errand.content %>
-</p>
-
-<%= link_to 'Edit', edit_errand_path(@errand) %> |
-<%= link_to 'Back', errands_path %>
+<br />
+<div class="card green lighten-5 z-depth-2">
+	<div class="card-content grey-text text-darken-1">
+		<span class="card-title grey-text text-darken-3"><%= @errand.title %></span>
+		<p>
+			<%= simple_format h(@errand.content) %>
+		</p>
+		<br>
+		<p>
+			<% @errand.labels.each do|label| %>
+          <%= link_to raw("<i class=\"mdi-action-label\"></i> ") + label.name,
+                                errands_path(label_id: label.id),
+                                class: "tags no-wrap" %>
+          &nbsp;&nbsp;
+          <% end %>
+		</p>
+	</div>
+	<div class="card-action">
+		<%= link_to 'Edit', edit_errand_path(@errand) %>
+		<%= link_to raw("Delete"), 
+          @errand, method: :delete, 
+          data: { confirm: 'Are you sure?' } %>
+		<%= link_to 'Back', errands_path, class: "right" %>
+	</div>
+</div>
