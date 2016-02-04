@@ -1,25 +1,45 @@
-<%= form_for(@errand) do |f| %>
-  <% if @errand.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@errand.errors.count, "error") %> prohibited this errand from being saved:</h2>
+<div class="row">
+  <%= form_for(@errand) do |f| %>
+    <% if @errand.errors.any? %>
+      <div class="col s10">
+        <div id="error_explanation" class="card-panel red white-text">
+          <div class="row-no-margin">
+            <div class="col s2 m1">
+              <i class="small mdi-alert-error"></i>
+            </div>
+            <div class="col s10 m11">
+              <b><%= pluralize(@errand.errors.count, "error") %> prohibited this TODO from being saved:</b>
+            </div>
+            <div class="col s10- m11 offset-s2 offset-m1">
+              <ul>
+                <% @errand.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
-      <ul>
-      <% @errand.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="input-field col s12">
+      <%= f.text_field :title, length: 100%>
+      <%= f.label :title, class: "active" %>
     </div>
-  <% end %>
+    <div class="input-field col s12">
+      <%= f.text_area :content, class: "materialize-textarea" %>
+      <%= f.label :content, class: "active" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="actions right">
+      <%= link_to raw("<i class=\"material-icons\">reply</i>"), 
+        errands_path,
+        class: "btn-floating btn-large waves-effect waves-circle waves-light light-green" %>
+      &nbsp;
+
+      <% icon = @errand.new_record? ? "note_add" : "mode_edit" %>
+      <%= f.button raw("<i class=\"material-icons\">"+ icon +"</i>"), class: "btn-floating btn-large waves-effect waves-light" %>
+    </div>
+
+  <% end %>
+</div>
