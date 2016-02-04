@@ -18,6 +18,32 @@
           errands_path,
           class: "waves-effect waves-teal" %>
       </li>
+
+      <li><div class="divider"></div></li>
+        
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">Labels<i class="mdi-navigation-arrow-drop-down"></i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li>
+                  <%= link_to raw("<i class=\"material-icons left\">dashboard</i>") + "Manage labels", 
+                      labels_path %>
+                </li>
+
+                <% @labels.each do|label| %>
+                  <li>
+                    <%= link_to raw("<i class=\"material-icons left\">label_outline</i>") + label.name,
+                                errands_path(label_id: label.id),
+                                class: "waves-effect" %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
     </ul>
 	</div>
 </nav>
