@@ -1,0 +1,33 @@
+<div>
+  <%= link_to raw("<i class=\"material-icons\">add</i>"), 
+              new_errand_path, 
+              class: "btn-floating btn-large waves-effect waves-circle waves-light cyan darken-1 right" %>
+  <h3>
+    <%= (@label? @label.name : "TODOs") %>
+  </h3>
+  
+</div>
+
+<ul class="collapsible popout" data-collapsible="accordion">
+  <% @errands.each do|errand| %>
+    <li>
+      <div class="collapsible-header">
+        <%= link_to errand.title, errand%>
+        <div class="right">
+          <%= link_to raw("<i class=\"small material-icons\">create</i>"),
+              edit_errand_path(errand),
+              class: "grey-text blue-hover" %>
+          <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
+              errand, method: :delete, 
+              data: { confirm: 'Are you sure?' },
+              class: "grey-text red-hover" %>
+        </div>      
+      </div>
+      <div class="collapsible-body">
+        <p>
+          <%= errand.content %>
+        </p>
+      </div>
+    </li>
+  <% end %>
+</ul>
