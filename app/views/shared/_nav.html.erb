@@ -35,7 +35,7 @@
                 <% @labels.each do|label| %>
                   <li>
                     <%= link_to raw("<i class=\"material-icons left\">label_outline</i>") + label.name,
-                                errands_path(label_id: label.id),
+                                label,
                                 class: "waves-effect" %>
                   </li>
                 <% end %>
