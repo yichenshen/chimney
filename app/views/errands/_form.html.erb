@@ -23,7 +23,7 @@
     <% end %>
 
     <div class="input-field col s12">
-      <%= f.text_field :title, length: 100%>
+      <%= f.text_field :title, length: 100, maxlength: 100, required: true%>
       <%= f.label :title, class: "active" %>
     </div>
     <div class="input-field col s12">
