@@ -28,7 +28,7 @@ class ErrandsController < ApplicationController
 
     respond_to do |format|
       if @errand.save
-        format.html { redirect_to @errand, notice: 'Errand was successfully created.' }
+        format.html { redirect_to @errand, notice: 'TODO has been added' }
         format.json { render :show, status: :created, location: @errand }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ErrandsController < ApplicationController
   def update
     respond_to do |format|
       if @errand.update(errand_params)
-        format.html { redirect_to @errand, notice: 'Errand was successfully updated.' }
+        format.html { redirect_to @errand, notice: 'TODO has been updated' }
         format.json { render :show, status: :ok, location: @errand }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ErrandsController < ApplicationController
   def destroy
     @errand.destroy
     respond_to do |format|
-      format.html { redirect_to errands_url, notice: 'Errand was successfully destroyed.' }
+      format.html { redirect_to errands_url, notice: 'TODO is removed' }
       format.json { head :no_content }
     end
   end
