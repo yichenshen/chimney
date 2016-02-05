@@ -3,18 +3,18 @@
 		<%= link_to raw('Chimney'), '/', class: "brand-logo center"%>
     <ul class="left">
       <li>
-        <a href="#" data-activates="slide-out" class="menu-btn"><i class="mdi-navigation-menu"></i></a>
+        <a href="#" data-activates="slide-out" class="menu-btn"><i class="material-icons">menu</i></a>
       </li>
 		</ul>
 		<ul class="right">
       <li>
-        <%= link_to raw("<i class=\"mdi-content-add\"></i>"), new_errand_path %>
+        <%= link_to raw("<i class=\"material-icons\">note_add</i>"), new_errand_path %>
       </li>
 		</ul>
 
     <ul id="slide-out" class="side-nav collapsible">
       <li>
-      <%= link_to raw("<i class=\"mdi-action-assignment left\"></i><b>TODOs</b>"), 
+      <%= link_to raw("<i class=\"material-icons left\">assignment</i><b>TODOs</b>"), 
           errands_path,
           class: "waves-effect waves-teal" %>
       </li>
@@ -24,7 +24,7 @@
       <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
           <li>
-            <a class="collapsible-header">Labels<i class="mdi-navigation-arrow-drop-down"></i></a>
+            <a class="collapsible-header">Labels<i class="material-icons">arrow_drop_down</i></a>
             <div class="collapsible-body">
               <ul>
                 <li>

@@ -9,11 +9,11 @@
 		<br>
 		<p>
 			<% @errand.labels.each do|label| %>
-          <%= link_to raw("<i class=\"mdi-action-label\"></i> ") + label.name,
-                                errands_path(label_id: label.id),
-                                class: "tags no-wrap" %>
-          &nbsp;&nbsp;
-          <% end %>
+          		<%= link_to raw("<i class=\"material-icons\">label</i> ") + label.name,
+					errands_path(label_id: label.id),
+                    class: "tags no-wrap" %>
+		        &nbsp;&nbsp;
+          	<% end %>
 		</p>
 	</div>
 	<div class="card-action">
