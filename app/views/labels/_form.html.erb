@@ -1,25 +1,45 @@
-<%= form_for(@label) do |f| %>
-  <% if @label.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@label.errors.count, "error") %> prohibited this label from being saved:</h2>
+<div class="row">
+  <%= form_for(@label) do|f| %>
+    <% if @label.errors.any? %>
+      <div class="col s10">
+        <div id="error_explanation" class="card-panel red white-text">
+          <div class="row-no-margin">
+            <div class="col s2 m1">
+              <i class="small mdi-alert-error"></i>
+            </div>
+            <div class="col s10 m11">
+              <b><%= pluralize(@label.errors.count, "error") %> prohibited this Label from being saved:</b>
+            </div>
+            <div class="col s10- m11 offset-s2 offset-m1">
+              <ul>
+                <% @errand.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
-      <ul>
-      <% @label.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="input-field col s12">
+      <%= f.text_field :name, length: 25, required: true %>
+      <%= f.label :name, class: "active" %> 
+    </div>
+
+    <div class="input-field col s12">
+      <%= f.text_area :description, class: "materialize-textarea" %>
+      <%= f.label :description, class: "active" %>
+    </div>
+
+    <div class="actions right">
+      <%= link_to raw("<i class=\"material-icons\">reply</i>"), 
+        labels_path,
+        class: "btn-floating btn-large waves-effect waves-circle waves-light light-green" %>
+      &nbsp;
+
+      <% icon = @label.new_record? ? "add" : "mode_edit" %>
+      <%= f.button raw("<i class=\"material-icons\">"+ icon +"</i>"), class: "btn-floating btn-large waves-effect waves-light blue" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
