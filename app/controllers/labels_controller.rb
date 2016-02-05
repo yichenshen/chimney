@@ -10,6 +10,7 @@ class LabelsController < ApplicationController
   # GET /labels/1
   # GET /labels/1.json
   def show
+    @errands = @label.errands
   end
 
   # GET /labels/new

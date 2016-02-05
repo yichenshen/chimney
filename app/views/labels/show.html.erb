@@ -1,14 +1,3 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @label.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @label.description %>
-</p>
-
-<%= link_to 'Edit', edit_label_path(@label) %> |
-<%= link_to 'Back', labels_path %>
+<%= render 'shared/list' %>
