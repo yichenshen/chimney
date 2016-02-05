@@ -31,6 +31,29 @@
       <%= f.label :content, class: "active" %>
     </div>
 
+    <div class="col s12">
+      <ul class="collapsible collapsible-accordion flatten borderless todo-link">
+        <li>
+          <a class="collapsible-header transparent borderless grey-text text-darken-1 blue-hover">
+            <i class="material-icons">arrow_drop_down</i>
+            Labels
+          </a>
+          <div class="collapsible-body borderless">
+            <ul>
+              <% @labels.each do|label|%>
+                <li>
+                  <p class="less-padding">
+                  <%= check_box_tag "errand[label_ids][]", label.id, @errand.labels.include?(label), id: "label#{label.id}" %>
+                  <%= label_tag "label#{label.id}", label.name %>
+                </p>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>   
+
     <div class="actions right">
       <%= link_to raw("<i class=\"material-icons\">reply</i>"), 
         errands_path,
