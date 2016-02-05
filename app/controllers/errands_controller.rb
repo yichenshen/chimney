@@ -73,6 +73,7 @@ class ErrandsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def errand_params
-      params.require(:errand).permit(:title, :content)
+      params[:errand][:label_ids] ||= []
+      params.require(:errand).permit(:title, :content, label_ids: [])
     end
 end
