@@ -29,7 +29,7 @@ class LabelsController < ApplicationController
 
     respond_to do |format|
       if @label.save
-        format.html { redirect_to @label, notice: 'Label added' }
+        format.html { redirect_to labels_url, notice: 'Label added' }
         format.json { render :show, status: :created, location: @label }
       else
         # POST usually excludes labels
@@ -45,7 +45,7 @@ class LabelsController < ApplicationController
   def update
     respond_to do |format|
       if @label.update(label_params)
-        format.html { redirect_to @label, notice: 'Label updated' }
+        format.html { redirect_to labels_url, notice: 'Label updated' }
         format.json { render :show, status: :ok, location: @label }
       else
         # POST usually excludes labels

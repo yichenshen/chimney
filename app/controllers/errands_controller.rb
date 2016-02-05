@@ -28,7 +28,7 @@ class ErrandsController < ApplicationController
 
     respond_to do |format|
       if @errand.save
-        format.html { redirect_to @errand, notice: 'TODO has been added' }
+        format.html { redirect_to errands_url, notice: 'TODO has been added' }
         format.json { render :show, status: :created, location: @errand }
       else
         # POST usually excludes labels
@@ -44,7 +44,7 @@ class ErrandsController < ApplicationController
   def update
     respond_to do |format|
       if @errand.update(errand_params)
-        format.html { redirect_to @errand, notice: 'TODO has been updated' }
+        format.html { redirect_to errands_url, notice: 'TODO has been updated' }
         format.json { render :show, status: :ok, location: @errand }
       else
         # POST usually excludes labels
