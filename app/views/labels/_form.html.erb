@@ -2,7 +2,7 @@
   <%= form_for(@label) do|f| %>
     <% if @label.errors.any? %>
       <div class="col s10">
-        <div id="error_explanation" class="card-panel red white-text">
+        <div id="error_explanation" class="card-panel red accent-1 white-text">
           <div class="row-no-margin">
             <div class="col s2 m1">
               <i class="small material-icons">error</i>
@@ -12,7 +12,7 @@
             </div>
             <div class="col s10- m11 offset-s2 offset-m1">
               <ul>
-                <% @errand.errors.full_messages.each do |message| %>
+                <% @label.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
                 <% end %>
               </ul>

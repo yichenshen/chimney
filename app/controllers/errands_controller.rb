@@ -31,6 +31,8 @@ class ErrandsController < ApplicationController
         format.html { redirect_to @errand, notice: 'TODO has been added' }
         format.json { render :show, status: :created, location: @errand }
       else
+        # POST usually excludes labels
+        get_all_labels 
         format.html { render :new }
         format.json { render json: @errand.errors, status: :unprocessable_entity }
       end
@@ -45,6 +47,8 @@ class ErrandsController < ApplicationController
         format.html { redirect_to @errand, notice: 'TODO has been updated' }
         format.json { render :show, status: :ok, location: @errand }
       else
+        # POST usually excludes labels
+        get_all_labels 
         format.html { render :edit }
         format.json { render json: @errand.errors, status: :unprocessable_entity }
       end

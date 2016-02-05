@@ -32,6 +32,8 @@ class LabelsController < ApplicationController
         format.html { redirect_to @label, notice: 'Label added' }
         format.json { render :show, status: :created, location: @label }
       else
+        # POST usually excludes labels
+        get_all_labels 
         format.html { render :new }
         format.json { render json: @label.errors, status: :unprocessable_entity }
       end
@@ -46,6 +48,8 @@ class LabelsController < ApplicationController
         format.html { redirect_to @label, notice: 'Label updated' }
         format.json { render :show, status: :ok, location: @label }
       else
+        # POST usually excludes labels
+        get_all_labels 
         format.html { render :edit }
         format.json { render json: @label.errors, status: :unprocessable_entity }
       end

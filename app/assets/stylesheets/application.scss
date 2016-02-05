@@ -39,3 +39,8 @@ main {
 		@extend .red-text;
 	}
 }
+
+.row-no-margin{
+	@extend .row;
+	margin-bottom: 0;
+}
