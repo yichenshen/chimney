@@ -27,3 +27,15 @@ body{
 main {
 	flex: 1 0 auto;
 }
+
+.blue-hover i{
+	&:hover{
+		@extend .blue-text, .darken-1;
+	}
+}
+
+.red-hover i{
+	&:hover{
+		@extend .red-text;
+	}
+}

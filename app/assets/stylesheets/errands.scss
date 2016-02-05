@@ -1,17 +1,3 @@
 // Place all the styles related to the errands controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-@import "materialize";
-
-.blue-hover i{
-	&:hover{
-		@extend .blue-text, .darken-1;
-	}
-}
-
-.red-hover i{
-	&:hover{
-		@extend .red-text;
-	}
-}

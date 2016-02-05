@@ -1,29 +1,32 @@
 <%= render 'shared/notice' %>
 
-<h1>Listing Labels</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @labels.each do |label| %>
-      <tr>
-        <td><%= label.name %></td>
-        <td><%= label.description %></td>
-        <td><%= link_to 'Show', label %></td>
-        <td><%= link_to 'Edit', edit_label_path(label) %></td>
-        <td><%= link_to 'Destroy', label, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div>
+  <%= link_to raw("<i class=\"material-icons\">add</i>"),
+      new_label_path,
+      class: "btn-floating btn-large waves-effect waves-circle waves-light blue darken-1 right" %>
+  <h4>Labels</h4>
+</div>
 
 <br>
+<ul class="collection z-depth-1">  
+  <% @labels.each do|label| %>
+    <li class="collection-item avatar">
+      <i class="material-icons circle blue">label_outline</i>
+      <span class="title"><h5><%= label.name %><h5></span>
+      <div class="secondary-content">
+        <%= link_to raw("<i class=\"small material-icons\">view_list</i>"),
+            label,
+            class: "grey-text blue-hover"%>    
+        <%= link_to raw("<i class=\"small material-icons\">mode_edit</i>"),
+            edit_label_path(label), 
+            class: "grey-text blue-hover"%>
+        <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
+            label, method: :delete, 
+            class: "grey-text red-hover", 
+            data: { confirm: 'Are you sure?' } %>
+      </div>
+    </li>
+  <% end %>
+</ul>
 
-<%= link_to 'New Label', new_label_path %>
