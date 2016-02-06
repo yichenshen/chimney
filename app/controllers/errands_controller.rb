@@ -1,5 +1,8 @@
 class ErrandsController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_errand, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_json_request, only: [:show]
 
   # GET /errands
   # GET /errands.json
@@ -13,7 +16,7 @@ class ErrandsController < ApplicationController
     end
   end
 
-  # GET /errands/1
+  # JSON only
   # GET /errands/1.json
   def show
   end
