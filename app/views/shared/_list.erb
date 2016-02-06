@@ -44,6 +44,10 @@
                 errand, method: :delete, 
                 data: { confirm: 'Are you sure?' },
                 class: "grey-text red-hover" %>
+            <%= link_to raw("<i class=\"small material-icons\">done</i>"), 
+                toggle_errand_path(errand), 
+                method: :patch, 
+                class: "grey-text green-hover" %>
           </div>      
 
           <span class="title">

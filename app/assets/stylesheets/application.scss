@@ -40,6 +40,12 @@ main {
 	}
 }
 
+.green-hover{
+	&:hover{
+		@extend .green-text;
+	}	
+}
+
 .row-no-margin{
 	@extend .row;
 	margin-bottom: 0;
