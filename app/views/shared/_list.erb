@@ -9,25 +9,31 @@
 </div>
 
 <ul class="collapsible popout" data-collapsible="accordion">
-  <% @errands.each do|errand| %>
-    <li>
-      <div class="collapsible-header">
-        <%= link_to errand.title, errand%>
-        <div class="right">
-          <%= link_to raw("<i class=\"small material-icons\">create</i>"),
-              edit_errand_path(errand),
-              class: "grey-text blue-hover" %>
-          <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
-              errand, method: :delete, 
-              data: { confirm: 'Are you sure?' },
-              class: "grey-text red-hover" %>
-        </div>      
-      </div>
-      <div class="collapsible-body">
-        <p>
-          <%= errand.content %>
-        </p>
-      </div>
-    </li>
+  <% if @errands and @errands.empty? %>
+    <div class="card-panel green lighten-3 center-align">
+      You have no TODO tasks yet.
+    </div>
+  <% else %>
+    <% @errands.each do|errand| %>
+      <li>
+        <div class="collapsible-header">
+          <%= link_to errand.title, errand%>
+          <div class="right">
+            <%= link_to raw("<i class=\"small material-icons\">create</i>"),
+                edit_errand_path(errand),
+                class: "grey-text blue-hover" %>
+            <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
+                errand, method: :delete, 
+                data: { confirm: 'Are you sure?' },
+                class: "grey-text red-hover" %>
+          </div>      
+        </div>
+        <div class="collapsible-body">
+          <p>
+            <%= errand.content %>
+          </p>
+        </div>
+      </li>
+    <% end %>
   <% end %>
 </ul>
