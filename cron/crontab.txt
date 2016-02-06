@@ -1,0 +1,1 @@
+0 */3 * * * cd /var/www/chimney/code && git pull >/dev/null && bundle install --deployment --without development test && bundle exec rake assets:precompile db:migrate RAILS_ENV=production && touch tmp/restart.txt
