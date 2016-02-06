@@ -26,6 +26,14 @@
       <%= f.text_field :title, length: 100, maxlength: 100, required: true%>
       <%= f.label :title, class: "active" %>
     </div>
+
+    <div class="input-field col s12">
+      <%= f.date_field  :deadline, 
+                        class: "datepicker", 
+                        value: @errand.deadline ? @errand.deadline.strftime("%-d %B, %Y"):nil %>
+      <%= f.label :deadline, class: "active" %>
+    </div>
+
     <div class="input-field col s12">
       <%= f.text_area :content, class: "materialize-textarea" %>
       <%= f.label :content, class: "active" %>
@@ -63,6 +71,5 @@
       <% icon = @errand.new_record? ? "note_add" : "mode_edit" %>
       <%= f.button raw("<i class=\"material-icons\">"+ icon +"</i>"), class: "btn-floating btn-large waves-effect waves-light" %>
     </div>
-
   <% end %>
 </div>
