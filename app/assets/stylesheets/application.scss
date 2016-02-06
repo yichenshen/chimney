@@ -46,6 +46,12 @@ main {
 	}	
 }
 
+.orange-hover{
+    &:hover{
+        @extend .orange-text;
+    }   
+}
+
 .row-no-margin{
 	@extend .row;
 	margin-bottom: 0;
