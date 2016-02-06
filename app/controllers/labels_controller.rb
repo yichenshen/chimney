@@ -13,7 +13,10 @@ class LabelsController < ApplicationController
   # GET /labels/1.json
   def show
     @errands = ordered_errand_list(@label.errands)
+    @errands_done = completed_errands(@label.errands)
+
     set_display_properties(@errands)
+    set_display_properties(@errands_done)
   end
 
   # GET /labels/new
