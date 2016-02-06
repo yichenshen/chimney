@@ -42,9 +42,21 @@
         </div>
       
         <div class="collapsible-body">
-          <p>
+          <p class="row">
             <%= errand.content %>
           </p>
+          
+          <% if errand.labels and !errand.labels.empty?%>
+            <div class="divider green darken-3"></div>
+            <br />
+
+            <% errand.labels.each do |label| %>
+              <span class="icon-chip light-blue lighten-3">
+              <i class="material-icons blue-text text-darken-2">label</i>
+              <%= label.name %>
+              </span>
+            <% end %>
+          <% end %>
         </div>
       </li>
     <% end %>

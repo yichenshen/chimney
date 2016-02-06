@@ -18,7 +18,7 @@ form ul li .less-padding{
 
 .collapsible.collection{
 	.collection-item.avatar.active{
-		@extend .black-text, .green.lighten-4
+		@extend .black-text, .green.lighten-4;
 	}
 
 	.collapsible-header{
@@ -29,4 +29,14 @@ form ul li .less-padding{
 		border: none;
 	}
 
+}
+
+.icon-chip{
+	@extend .chip;
+
+	i.material-icons{
+		float: left;
+		padding-left: 0px;
+		padding-right: 2px;
+	}
 }
