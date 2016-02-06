@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :labels
-  resources :errands
+  resources :errands do
+    put 'toggle', on: :member
+    patch 'toggle', on: :member
+  end
 
   root 'errands#index'
   # The priority is based upon order of creation: first created -> highest priority.

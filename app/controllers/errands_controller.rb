@@ -1,7 +1,7 @@
 class ErrandsController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_errand, only: [:show, :edit, :update, :destroy]
+  before_action :set_errand, only: [:show, :edit, :update, :destroy, :toggle]
   before_action :ensure_json_request, only: [:show]
 
   # GET /errands
@@ -81,6 +81,11 @@ class ErrandsController < ApplicationController
       format.html { redirect_to errands_url, notice: 'TODO is removed' }
       format.json { head :no_content }
     end
+  end
+
+  # PATCH/PUT /errands/1/toggle
+  # Toggles done state of TODO
+  def toggle
   end
 
   private
