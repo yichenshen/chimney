@@ -7,4 +7,12 @@ class Errand < ActiveRecord::Base
 	def toggle_state
 		self.done = !self.done
 	end
+
+	def set_status
+		if self.deadline and self.deadline < Date.today
+        	self.status = :late
+      	elsif self.deadline and self.deadline == Date.today
+        	self.status = :due_today
+      	end
+	end
 end
