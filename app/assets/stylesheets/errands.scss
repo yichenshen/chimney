@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+@import "materialize";
 form .flatten{
 	box-shadow: none;
 }
@@ -14,4 +14,19 @@ form .borderless{
 form ul li .less-padding{
 	padding-bottom: 10px;
 	padding-top: 10px;
+}
+
+.collapsible.collection{
+	.collection-item.avatar.active{
+		@extend .black-text, .green.lighten-4
+	}
+
+	.collapsible-header{
+		border: none;
+	}
+
+	.collapsible-body{
+		border: none;
+	}
+
 }

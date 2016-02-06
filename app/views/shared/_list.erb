@@ -8,16 +8,18 @@
   
 </div>
 
-<ul class="collapsible popout" data-collapsible="accordion">
+<ul class="collapsible popout collection" data-collapsible="accordion">
   <% if @errands and @errands.empty? %>
     <div class="card-panel green lighten-3 center-align">
       You have no TODO tasks yet.
     </div>
   <% else %>
     <% @errands.each do|errand| %>
-      <li>
+      <li class="collection-item avatar">
+
+        <i class="material-icons circle green">assignment</i>
+      
         <div class="collapsible-header">
-          <%= link_to errand.title, errand%>
           <div class="right">
             <%= link_to raw("<i class=\"small material-icons\">create</i>"),
                 edit_errand_path(errand),
@@ -27,7 +29,18 @@
                 data: { confirm: 'Are you sure?' },
                 class: "grey-text red-hover" %>
           </div>      
+
+          <span class="title">
+            <%= errand.title %>
+          </span>
+
+          <% if errand.deadline %>
+            <p class="grey-text text-darken-1">
+              Due:  <%= errand.deadline.strftime("%-d %B, %Y") %>
+            </p>
+          <% end %>
         </div>
+      
         <div class="collapsible-body">
           <p>
             <%= errand.content %>

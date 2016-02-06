@@ -5,6 +5,12 @@ class ErrandsController < ApplicationController
   # GET /errands.json
   def index
     @errands = Errand.all
+
+    @errands.each do |e|
+      if !e.content or e.content.empty?
+        e.content = "[No content]"
+      end
+    end
   end
 
   # GET /errands/1
