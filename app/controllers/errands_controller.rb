@@ -7,7 +7,9 @@ class ErrandsController < ApplicationController
   # GET /errands
   # GET /errands.json
   def index
-    @errands = Errand.all
+    @errands_due = Errand.where.not(deadline: nil).order(:deadline, :created_at)
+    @errands_no_due = Errand.where(deadline: nil).order(:created_at)
+    @errands = @errands_due + @errands_no_due
 
     @errands.each do |e|
       if !e.content or e.content.empty?
