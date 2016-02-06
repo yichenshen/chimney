@@ -86,6 +86,22 @@ class ErrandsController < ApplicationController
   # PATCH/PUT /errands/1/toggle
   # Toggles done state of TODO
   def toggle
+
+    @errand.toggle_state
+
+    new_state_str = @errand.done ? "done" : "not done"
+
+    respond_to do |format|
+      if @errand.save
+        format.html { redirect_to errands_url, notice: 'TODO marked as ' + new_state_str }
+        format.json { render :show, status: :ok, location: @errand }
+      else
+        # POST usually excludes labels
+        get_all_labels 
+        format.html { redirect_to errands_url, notice: 'Error marking TODO, try again later' }
+        format.json { render json: @errand.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

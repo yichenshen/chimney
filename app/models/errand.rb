@@ -3,4 +3,8 @@ class Errand < ActiveRecord::Base
 	validates :title, presence: true, length: {maximum: 100}
 
 	attr_accessor :status
+
+	def toggle_state
+		self.done = !self.done
+	end
 end
