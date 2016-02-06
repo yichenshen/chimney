@@ -1,4 +1,6 @@
 class LabelsController < ApplicationController
+  include ErrandsHelper
+
   before_action :set_label, only: [:show, :edit, :update, :destroy]
 
   # GET /labels
@@ -10,7 +12,8 @@ class LabelsController < ApplicationController
   # GET /labels/1
   # GET /labels/1.json
   def show
-    @errands = @label.errands
+    @errands = ordered_errand_list(@label.errands)
+    set_display_properties(@errands)
   end
 
   # GET /labels/new

@@ -1,5 +1,6 @@
 class ErrandsController < ApplicationController
   include ApplicationHelper
+  include ErrandsHelper
 
   before_action :set_errand, only: [:show, :edit, :update, :destroy]
   before_action :ensure_json_request, only: [:show]
@@ -7,22 +8,9 @@ class ErrandsController < ApplicationController
   # GET /errands
   # GET /errands.json
   def index
-    @errands_due = Errand.where.not(deadline: nil).order(:deadline, :created_at)
-    @errands_no_due = Errand.where(deadline: nil).order(:created_at)
-    @errands = @errands_due + @errands_no_due
+    @errands = ordered_errand_list(Errand)
 
-    @errands.each do |e|
-      if !e.content or e.content.empty?
-        e.content = "[No content]"
-      end
-
-      if e.deadline and e.deadline < Date.today
-        e.status = :late
-      elsif e.deadline and e.deadline == Date.today
-        e.status = :due_today
-      end
-          
-    end
+    set_display_properties(@errands)
   end
 
   # JSON only

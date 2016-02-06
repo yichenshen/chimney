@@ -3,4 +3,12 @@ class Errand < ActiveRecord::Base
 	validates :title, presence: true, length: {maximum: 100}
 
 	attr_accessor :status
+
+	def set_status
+		if self.deadline and self.deadline < Date.today
+        	self.status = :late
+      	elsif self.deadline and self.deadline == Date.today
+        	self.status = :due_today
+      	end
+	end
 end
