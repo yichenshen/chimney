@@ -15,9 +15,25 @@
     </div>
   <% else %>
     <% @errands.each do|errand| %>
-      <li class="collection-item avatar">
+      <%  case errand.status
+          when :late
+            color = "red"
+            text = "red-text"
+            icon = "assignment_late"
+          when :due_today
+            color = "orange"
+            text = "orange-text"
+            icon = "assignment"
+          else
+            color = "green"
+            text = "grey-text"
+            icon = "assignment"
+          end
+      %>
 
-        <i class="material-icons circle green">assignment</i>
+      <li class="collection-item avatar lighten-4 <%= color +"-back" %>">
+
+        <i class="material-icons circle <%= color %> lighten-1"><%= icon =%></i>
       
         <div class="collapsible-header">
           <div class="right">
@@ -35,7 +51,7 @@
           </span>
 
           <% if errand.deadline %>
-            <p class="grey-text text-darken-1">
+            <p class="text-darken-2 <%= text %>">
               Due:  <%= errand.deadline.strftime("%-d %B, %Y") %>
             </p>
           <% end %>

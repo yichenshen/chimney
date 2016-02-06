@@ -15,6 +15,13 @@ class ErrandsController < ApplicationController
       if !e.content or e.content.empty?
         e.content = "[No content]"
       end
+
+      if e.deadline and e.deadline < Date.today
+        e.status = :late
+      elsif e.deadline and e.deadline == Date.today
+        e.status = :due_today
+      end
+          
     end
   end
 

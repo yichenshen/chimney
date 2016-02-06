@@ -17,8 +17,28 @@ form ul li .less-padding{
 }
 
 .collapsible.collection{
-	.collection-item.avatar.active{
+	.collection-item.avatar.active.green-back{
 		@extend .black-text, .green.lighten-4;
+
+		.collapsible-header{
+			@extend .green.lighten-5;
+		}
+	}
+
+	.collection-item.avatar.active.red-back{
+		@extend .black-text, .red.lighten-4;
+
+		.collapsible-header{
+			@extend .red.lighten-5;
+		}
+	}
+
+	.collection-item.avatar.active.orange-back{
+		@extend .black-text, .orange.lighten-4;
+
+		.collapsible-header{
+			@extend .orange.lighten-5;
+		}
 	}
 
 	.collapsible-header{
