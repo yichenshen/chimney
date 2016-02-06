@@ -31,7 +31,7 @@
           end
       %>
 
-      <li class="collection-item avatar lighten-4 <%= color +"-back" %>">
+      <li class="collection-item avatar <%= color +"-back" %>">
 
         <i class="material-icons circle <%= color %> lighten-1"><%= icon =%></i>
       
@@ -67,7 +67,7 @@
           </p>
           
           <% if errand.labels and !errand.labels.empty?%>
-            <div class="divider green darken-3"></div>
+            <div class="divider <%= color %> darken-3"></div>
             <br />
 
             <% errand.labels.each do |label| %>
@@ -81,4 +81,77 @@
       </li>
     <% end %>
   <% end %>
+</ul>
+
+<br />
+
+<ul class="collapsible collapsible-accordion flatten borderless">
+  <li>
+    <a class="collapsible-header transparent grey-text text-darken-1 blue-hover">
+      <i class="material-icons">arrow_drop_down</i>
+      <h5>Completed TODOs</h5>
+    </a>
+    <div class="collapsible-body borderless">
+      <ul class="collapsible popout collection" data-collapsible="accordion">
+        <% if @errands_done and @errands_done.empty? %>
+          <div class="card-panel grey lighten-2 center-align">
+            You have no completed TODOs.
+          </div>
+        <% else %>
+          <% @errands_done.each do|errand| %>
+
+            <li class="collection-item avatar grey-back">
+
+              <i class="material-icons circle grey">assignment_turned_in</i>
+            
+              <div class="collapsible-header">
+                <div class="right">
+                  <%= link_to raw("<i class=\"small material-icons\">create</i>"),
+                      edit_errand_path(errand),
+                      class: "grey-text blue-hover" %>
+                  <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
+                      errand, method: :delete, 
+                      data: { confirm: 'Are you sure?' },
+                      class: "grey-text red-hover" %>
+                  <%= link_to raw("<i class=\"small material-icons\">done</i>"), 
+                      toggle_errand_path(errand), 
+                      method: :patch, 
+                      class: "grey-text green-hover" %>
+                </div>      
+
+                <span class="title">
+                  <%= errand.title %>
+                </span>
+
+                <% if errand.deadline %>
+                  <div class="text-darken-2 grey-text">
+                    Was due:  <%= errand.deadline.strftime("%-d %B, %Y") %>
+                  </div>
+                <% end %>
+              </div>
+            
+              <div class="collapsible-body">
+                <p class="row">
+                  <%= errand.content %>
+                </p>
+                
+                <% if errand.labels and !errand.labels.empty?%>
+                  <div class="divider green darken-3"></div>
+                  <br />
+
+                  <% errand.labels.each do |label| %>
+                    <span class="icon-chip blue-grey lighten-3">
+                    <i class="material-icons blue-grey-text text-darken-2">label</i>
+                    <%= label.name %>
+                    </span>
+                  <% end %>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+
+    </div>
+  </li>
 </ul>

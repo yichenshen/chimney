@@ -9,8 +9,10 @@ class ErrandsController < ApplicationController
   # GET /errands.json
   def index
     @errands = ordered_errand_list(Errand)
+    @errands_done = completed_errands(Errand)
 
     set_display_properties(@errands)
+    set_display_properties(@errands_done)
   end
 
   # JSON only

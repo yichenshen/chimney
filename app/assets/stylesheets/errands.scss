@@ -3,15 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "materialize";
-form .flatten{
+.collapsible.collapsible-accordion.flatten.borderless{
 	box-shadow: none;
-}
-
-form .borderless{
 	border: none;
 }
 
-form ul li .less-padding{
+.collapsible-header.borderless{
+	border: none;
+}
+
+.collapsible-body.borderless{
+	border: none;
+}
+
+ul li .less-padding{
 	padding-bottom: 10px;
 	padding-top: 10px;
 }
@@ -38,6 +43,14 @@ form ul li .less-padding{
 
 		.collapsible-header{
 			@extend .orange.lighten-5;
+		}
+	}
+
+	.collection-item.avatar.active.grey-back{
+		@extend .black-text, .grey.lighten-2;
+
+		.collapsible-header{
+			@extend .grey.lighten-4;
 		}
 	}
 

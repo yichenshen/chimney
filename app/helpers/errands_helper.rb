@@ -7,6 +7,11 @@ module ErrandsHelper
         errands_due + errands_no_due
 	end
 
+    # Gets a list of completed TODOs,
+    def completed_errands(collection)
+        collection.where(done: true).order(:created_at)
+    end
+
 	def set_display_properties(collection)
 		collection.each do |e|
 		  	if !e.content or e.content.empty?
