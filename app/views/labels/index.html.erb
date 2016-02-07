@@ -8,25 +8,31 @@
 </div>
 
 <br>
-<ul class="collection z-depth-1">  
-  <% @labels.each do|label| %>
-    <li class="collection-item avatar">
-      <i class="material-icons circle blue">label_outline</i>
-      <span class="title"><h5><%= label.name %><h5></span>
-      <div class="secondary-content">
-        <%= link_to raw("<i class=\"small material-icons\">view_list</i>"),
-            [@app_session, label],
-            class: "grey-text blue-hover"%>    
-        <%= link_to raw("<i class=\"small material-icons\">mode_edit</i>"),
-            edit_session_label_path(@app_session, label), 
-            class: "grey-text blue-hover"%>
-        <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
-            [@app_session, label], 
-            method: :delete, 
-            class: "grey-text red-hover", 
-            data: { confirm: 'Are you sure?' } %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<% if @labels.empty? %>
+  <div class="card-panel blue lighten-3 center-align">
+    You have no labels.
+  </div>
+<% else %>
+  <ul class="collection z-depth-1">
+    <% @labels.each do|label| %>
+      <li class="collection-item avatar">
+        <i class="material-icons circle blue">label_outline</i>
+        <span class="title"><h5><%= label.name %><h5></span>
+        <div class="secondary-content">
+          <%= link_to raw("<i class=\"small material-icons\">view_list</i>"),
+              [@app_session, label],
+              class: "grey-text blue-hover"%>    
+          <%= link_to raw("<i class=\"small material-icons\">mode_edit</i>"),
+              edit_session_label_path(@app_session, label), 
+              class: "grey-text blue-hover"%>
+          <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
+              [@app_session, label], 
+              method: :delete, 
+              class: "grey-text red-hover", 
+              data: { confirm: 'Are you sure?' } %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
