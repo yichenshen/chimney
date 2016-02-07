@@ -41,7 +41,7 @@
                 edit_session_errand_path(@app_session, errand),
                 class: "grey-text blue-hover" %>
             <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
-                [@app_session, errand], 
+                [@app_session, errand, {label: (@label ? @label.id : nil)}], 
                 method: :delete, 
                 data: { confirm: 'Are you sure?' },
                 class: "grey-text red-hover" %>
@@ -111,7 +111,7 @@
                       edit_session_errand_path(@app_session, errand),
                       class: "grey-text blue-hover" %>
                   <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
-                      [@app_session, errand] , 
+                      [@app_session, errand, {label: (@label ? @label.id : nil)}], 
                       method: :delete, 
                       data: { confirm: 'Are you sure?' },
                       class: "grey-text red-hover" %>

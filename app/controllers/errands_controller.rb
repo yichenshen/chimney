@@ -69,8 +69,15 @@ class ErrandsController < ApplicationController
   # DELETE /errands/1.json
   def destroy
     @errand.destroy
+
+    path = session_errands_url(@app_session)
+    if params[:label]
+      @label = @app_session.labels.find(params[:label])
+      path = session_label_url(@app_session, @label)
+    end
+
     respond_to do |format|
-      format.html { redirect_to session_errands_url(@app_session), notice: 'TODO is removed' }
+      format.html { redirect_to path, notice: 'TODO is removed' }
       format.json { head :no_content }
     end
   end
