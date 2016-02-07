@@ -38,14 +38,15 @@
         <div class="collapsible-header">
           <div class="right">
             <%= link_to raw("<i class=\"small material-icons\">create</i>"),
-                edit_session_errand_path(errand),
+                edit_session_errand_path(@app_session, errand),
                 class: "grey-text blue-hover" %>
             <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
-                errand, method: :delete, 
+                [@app_session, errand], 
+                method: :delete, 
                 data: { confirm: 'Are you sure?' },
                 class: "grey-text red-hover" %>
             <%= link_to raw("<i class=\"small material-icons\">done</i>"), 
-                toggle_session_errand_path(errand), 
+                toggle_session_errand_path(@app_session, errand), 
                 method: :patch, 
                 class: "grey-text green-hover" %>
           </div>      
@@ -107,14 +108,15 @@
               <div class="collapsible-header">
                 <div class="right">
                   <%= link_to raw("<i class=\"small material-icons\">create</i>"),
-                      edit_errand_path(errand),
+                      edit_session_errand_path(@app_session, errand),
                       class: "grey-text blue-hover" %>
                   <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
-                      errand, method: :delete, 
+                      [@app_session, errand] , 
+                      method: :delete, 
                       data: { confirm: 'Are you sure?' },
                       class: "grey-text red-hover" %>
                   <%= link_to raw("<i class=\"small material-icons\">undo</i>"), 
-                      toggle_errand_path(errand), 
+                      toggle_session_errand_path(@app_session, errand), 
                       method: :patch, 
                       class: "grey-text orange-hover" %>
                 </div>      
@@ -151,7 +153,6 @@
           <% end %>
         <% end %>
       </ul>
-
     </div>
   </li>
 </ul>

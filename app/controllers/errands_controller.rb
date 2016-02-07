@@ -2,14 +2,16 @@ class ErrandsController < ApplicationController
   include ApplicationHelper
   include ErrandsHelper
 
+  before_action :get_app_session
   before_action :set_errand, only: [:show, :edit, :update, :destroy, :toggle]
+  before_action :get_all_labels, if: Proc.new{|c| request.get?}
   before_action :ensure_json_request, only: [:show]
 
   # GET /errands
   # GET /errands.json
   def index
-    @errands = ordered_errand_list(Errand)
-    @errands_done = completed_errands(Errand)
+    @errands = ordered_errand_list(@app_session.errands)
+    @errands_done = completed_errands(@app_session.errands)
 
     set_display_properties(@errands)
     set_display_properties(@errands_done)
@@ -22,7 +24,7 @@ class ErrandsController < ApplicationController
 
   # GET /errands/new
   def new
-    @errand = Errand.new
+    @errand = @app_session.errands.new
   end
 
   # GET /errands/1/edit
@@ -32,11 +34,11 @@ class ErrandsController < ApplicationController
   # POST /errands
   # POST /errands.json
   def create
-    @errand = Errand.new(errand_params)
+    @errand = @app_session.errands.new(errand_params)
 
     respond_to do |format|
       if @errand.save
-        format.html { redirect_to errands_url, notice: 'TODO has been added' }
+        format.html { redirect_to session_errands_url(@app_session), notice: 'TODO has been added' }
         format.json { render :show, status: :created, location: @errand }
       else
         # POST usually excludes labels
@@ -52,7 +54,7 @@ class ErrandsController < ApplicationController
   def update
     respond_to do |format|
       if @errand.update(errand_params)
-        format.html { redirect_to errands_url, notice: 'TODO has been updated' }
+        format.html { redirect_to session_errands_url(@app_session), notice: 'TODO has been updated' }
         format.json { render :show, status: :ok, location: @errand }
       else
         # POST usually excludes labels
@@ -68,7 +70,7 @@ class ErrandsController < ApplicationController
   def destroy
     @errand.destroy
     respond_to do |format|
-      format.html { redirect_to errands_url, notice: 'TODO is removed' }
+      format.html { redirect_to session_errands_url(@app_session), notice: 'TODO is removed' }
       format.json { head :no_content }
     end
   end
@@ -83,12 +85,12 @@ class ErrandsController < ApplicationController
 
     respond_to do |format|
       if @errand.save
-        format.html { redirect_to errands_url, notice: 'TODO marked as ' + new_state_str }
+        format.html { redirect_to session_errands_url(@app_session), notice: 'TODO marked as ' + new_state_str }
         format.json { render :show, status: :ok, location: @errand }
       else
         # POST usually excludes labels
         get_all_labels 
-        format.html { redirect_to errands_url, notice: 'Error marking TODO, try again later' }
+        format.html { redirect_to session_errands_url(@app_session), notice: 'Error marking TODO, try again later' }
         format.json { render json: @errand.errors, status: :unprocessable_entity }
       end
     end
@@ -97,12 +99,16 @@ class ErrandsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_errand
-      @errand = Errand.find(params[:id])
+      @errand = @app_session.errands.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def errand_params
       params[:errand][:label_ids] ||= []
       params.require(:errand).permit(:title, :content, :deadline ,label_ids: [])
+    end
+
+    def get_app_session
+      @app_session = Session.find(params[:session_id])
     end
 end

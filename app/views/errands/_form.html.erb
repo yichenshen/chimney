@@ -1,5 +1,5 @@
 <div class="row">
-  <%= form_for(@errand) do |f| %>
+  <%= form_for [@app_session, @errand] do |f| %>
     <% if @errand.errors.any? %>
       <div class="col s10">
         <div id="error_explanation" class="card-panel red accent-1 white-text">
@@ -64,7 +64,7 @@
 
     <div class="actions right">
       <%= link_to raw("<i class=\"material-icons\">reply</i>"), 
-        errands_path,
+        session_errands_path(@app_session),
         class: "btn-floating btn-large waves-effect waves-circle waves-light light-green" %>
       &nbsp;
 
