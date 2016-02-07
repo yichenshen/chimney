@@ -1,11 +1,25 @@
 <div>
   <%= link_to raw("<i class=\"material-icons\">add</i>"), 
               new_session_errand_path(@app_session), 
-              class: "btn-floating btn-large waves-effect waves-circle waves-light cyan darken-1 right" %>
+              class: "btn-floating btn-large waves-effect waves-circle waves-light green lighten-1 right" %>
   <h3>
     <%= (@label? @label.name : "TODOs") %>
   </h3>
 </div>
+
+<br />
+
+<nav>
+  <div class="nav-wrapper green lighten-1">
+    <%= form_tag "#", method: :get do %>
+      <div class="input-field">
+        <%= search_field_tag :search_term, nil, required: true%>
+        <%= label_tag :search_term, raw("<i class=\"material-icons\">search</i>") %>
+        <i class="material-icons">close</i>
+      </div>
+    <% end %>
+  </div>
+</nav>
 
 <br />
 
