@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'sessions/index'
+
   resources :sessions, only: [:index, :show] do
     resources :labels
     resources :errands do
