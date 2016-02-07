@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :sessions, only: [:index, :show] do
+    post 'setsession', on: :member
+
     resources :labels
     resources :errands do
       put 'toggle', on: :member

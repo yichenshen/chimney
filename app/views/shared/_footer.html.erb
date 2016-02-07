@@ -34,7 +34,11 @@
                         </div>
                         <div class="modal-footer red lighten-3">
                             <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat">Replace</a>
+                            
+                            <%= link_to "Replace",
+                                        setsession_session_path(@app_session),
+                                        method: :post,
+                                        class: "modal-action modal-close waves-effect waves-light btn-flat" %>
                         </div>
                     </div>
                 <% end %>
