@@ -46,7 +46,7 @@
                 data: { confirm: 'Are you sure?' },
                 class: "grey-text red-hover" %>
             <%= link_to raw("<i class=\"small material-icons\">done</i>"), 
-                toggle_session_errand_path(@app_session, errand), 
+                toggle_session_errand_path(@app_session, errand, {label: (@label ? @label.id : nil)}), 
                 method: :patch, 
                 class: "grey-text green-hover" %>
           </div>      
@@ -116,7 +116,7 @@
                       data: { confirm: 'Are you sure?' },
                       class: "grey-text red-hover" %>
                   <%= link_to raw("<i class=\"small material-icons\">undo</i>"), 
-                      toggle_session_errand_path(@app_session, errand), 
+                      toggle_session_errand_path(@app_session, errand, {label: (@label ? @label.id : nil)}), 
                       method: :patch, 
                       class: "grey-text orange-hover" %>
                 </div>      

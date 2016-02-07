@@ -83,10 +83,17 @@ class ErrandsController < ApplicationController
 
     new_state_str = @errand.done ? "done" : "not done"
 
+    path = session_errands_url(@app_session)
+
+    if params[:label]
+      @label = @app_session.labels.find(params[:label])
+      path = session_label_url(@app_session, @label)
+    end
+
     respond_to do |format|
       if @errand.save
-        format.html { redirect_to session_errands_url(@app_session), notice: 'TODO marked as ' + new_state_str }
-        format.json { render :show, status: :ok, location: @errand }
+          format.html { redirect_to path, notice: 'TODO marked as ' + new_state_str }
+          format.json { render :show, status: :ok, location: @errand }
       else
         # POST usually excludes labels
         get_all_labels 
