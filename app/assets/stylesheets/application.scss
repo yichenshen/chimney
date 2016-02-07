@@ -14,7 +14,7 @@
  *= require_self
  */
 @import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
+$primary-color: color("green", "lighten-2") !default;
 @import "materialize";
 
 body{
@@ -55,4 +55,11 @@ main {
 .row-no-margin{
 	@extend .row;
 	margin-bottom: 0;
+}
+
+#save-link{
+    @extend .z-depth-1, .green.lighten-4, .green-text.text-darken-4;
+    border: none;
+    border-color: #ffffff;
+    padding-left: 10px;
 }
