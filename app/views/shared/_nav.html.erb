@@ -8,14 +8,14 @@
 		</ul>
 		<ul class="right">
       <li>
-        <%= link_to raw("<i class=\"material-icons\">note_add</i>"), new_errand_path %>
+        <%= link_to raw("<i class=\"material-icons\">note_add</i>"), new_session_errand_path(@app_session) %>
       </li>
 		</ul>
 
     <ul id="slide-out" class="side-nav collapsible">
       <li>
       <%= link_to raw("<i class=\"material-icons left\">assignment</i><b>TODOs</b>"), 
-          errands_path,
+          session_errands_path(@app_session),
           class: "waves-effect waves-teal" %>
       </li>
 
@@ -29,13 +29,13 @@
               <ul>
                 <li>
                   <%= link_to raw("<i class=\"material-icons left\">dashboard</i>") + "Manage labels", 
-                      labels_path %>
+                      session_labels_path(@app_session) %>
                 </li>
 
                 <% @labels.each do|label| %>
                   <li>
                     <%= link_to raw("<i class=\"material-icons left\">label_outline</i>") + label.name,
-                                label,
+                                [@app_session, label],
                                 class: "waves-effect" %>
                   </li>
                 <% end %>

@@ -1,6 +1,6 @@
 <div>
   <%= link_to raw("<i class=\"material-icons\">add</i>"), 
-              new_errand_path, 
+              new_session_errand_path(@app_session), 
               class: "btn-floating btn-large waves-effect waves-circle waves-light cyan darken-1 right" %>
   <h3>
     <%= (@label? @label.name : "TODOs") %>
@@ -38,14 +38,14 @@
         <div class="collapsible-header">
           <div class="right">
             <%= link_to raw("<i class=\"small material-icons\">create</i>"),
-                edit_errand_path(errand),
+                edit_session_errand_path(errand),
                 class: "grey-text blue-hover" %>
             <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
                 errand, method: :delete, 
                 data: { confirm: 'Are you sure?' },
                 class: "grey-text red-hover" %>
             <%= link_to raw("<i class=\"small material-icons\">done</i>"), 
-                toggle_errand_path(errand), 
+                toggle_session_errand_path(errand), 
                 method: :patch, 
                 class: "grey-text green-hover" %>
           </div>      
