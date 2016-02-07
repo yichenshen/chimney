@@ -11,6 +11,33 @@
                             type="text" 
                             class="validate">
                 </div>
+                <% if session[:current_app_session_id] != @app_session.id %>
+                    <span class="green-text text-lighten-5">
+                        <i class="tiny material-icons">info_outline</i>
+                        The current TODO is not your default. Click 
+                        <a class="blue-text text-accent-2 modal-trigger" href="#confirmModal" ><u>here</u></a> 
+                        to set it as your default.
+                    </span>
+
+                    <div id="confirmModal" class="modal red lighten-4">
+                        <div class="modal-content">
+                            <h4>
+                                <i class="small material-icons">warning</i>
+                                Warning
+                            </h4>
+                            <p>
+                                Setting this TODO as your default will overwrite your current default.
+                            </p>
+                            <p>
+                                Copy your original TODO URL to prevent losing any data!
+                            </p>
+                        </div>
+                        <div class="modal-footer red lighten-3">
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat">Replace</a>
+                        </div>
+                    </div>
+                <% end %>
             </p>
         </div>
         <div class="col l4 offset-l2 s12">
