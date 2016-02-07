@@ -1,5 +1,7 @@
 class Errand < ActiveRecord::Base
+    belongs_to :session, inverse_of: :errand
 	has_and_belongs_to_many :labels, inverse_of: :errand
+    
 	validates :title, presence: true, length: {maximum: 100}
 
 	attr_accessor :status

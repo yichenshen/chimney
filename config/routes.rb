@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :labels
-  resources :errands do
-    put 'toggle', on: :member
-    patch 'toggle', on: :member
+  
+  resources :sessions, only: [:index, :show] do
+    resources :labels
+    resources :errands do
+      put 'toggle', on: :member
+      patch 'toggle', on: :member
+    end
   end
 
   root 'errands#index'
