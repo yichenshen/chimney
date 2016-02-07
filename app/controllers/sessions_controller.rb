@@ -42,6 +42,7 @@ class SessionsController < ApplicationController
     #Creates a new session
     def new_app_session
         app_session = Session.new
+        app_session.accessed_at = DateTime.now
         app_session.save
 
         app_session
