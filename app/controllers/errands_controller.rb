@@ -10,8 +10,11 @@ class ErrandsController < ApplicationController
   # GET /errands
   # GET /errands.json
   def index
-    @errands = ordered_errand_list(@app_session.errands)
-    @errands_done = completed_errands(@app_session.errands)
+    @search_term = params[:search_term]
+    errand_list = @search_term ? @app_session.errands.match_string(@search_term) : @app_session.errands
+
+    @errands = ordered_errand_list(errand_list)
+    @errands_done = completed_errands(errand_list)
 
     set_display_properties(@errands)
     set_display_properties(@errands_done)

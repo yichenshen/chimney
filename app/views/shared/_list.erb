@@ -11,9 +11,10 @@
 
 <nav>
   <div class="nav-wrapper green lighten-1">
-    <%= form_tag "#", method: :get do %>
+    <!-- form targets current page -->
+    <%= form_tag nil, method: :get do %>
       <div class="input-field">
-        <%= search_field_tag :search_term, nil, required: true%>
+        <%= search_field_tag :search_term, nil, value: @search_term%>
         <%= label_tag :search_term, raw("<i class=\"material-icons\">search</i>") %>
         <i class="material-icons">close</i>
       </div>

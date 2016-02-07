@@ -14,9 +14,12 @@ class LabelsController < ApplicationController
   # GET /labels/1
   # GET /labels/1.json
   def show
-    @errands = ordered_errand_list(@label.errands)
-    @errands_done = completed_errands(@label.errands)
+    @search_term = params[:search_term]
+    errand_list = @search_term ? @label.errands.match_string(@search_term) : @label.errands
 
+    @errands = ordered_errand_list(errand_list)
+    @errands_done = completed_errands(errand_list)
+    
     set_display_properties(@errands)
     set_display_properties(@errands_done)
   end

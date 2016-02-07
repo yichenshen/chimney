@@ -4,6 +4,8 @@ class Errand < ActiveRecord::Base
 
 	validates :title, presence: true, length: {maximum: 100}
 
+    scope :match_string, ->(term) { where("title LIKE (?) OR content LIKE (?)", "%" + term + "%", "%" + term + "%")}
+
 	attr_accessor :status
 
 	def toggle_state
