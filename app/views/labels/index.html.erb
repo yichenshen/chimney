@@ -1,9 +1,8 @@
 <%= render 'shared/notice' %>
 
-
 <div>
   <%= link_to raw("<i class=\"material-icons\">add</i>"),
-      new_label_path,
+      new_session_label_path(@app_session),
       class: "btn-floating btn-large waves-effect waves-circle waves-light blue darken-1 right" %>
   <h4>Labels</h4>
 </div>
@@ -16,13 +15,14 @@
       <span class="title"><h5><%= label.name %><h5></span>
       <div class="secondary-content">
         <%= link_to raw("<i class=\"small material-icons\">view_list</i>"),
-            label,
+            [@app_session, label],
             class: "grey-text blue-hover"%>    
         <%= link_to raw("<i class=\"small material-icons\">mode_edit</i>"),
-            edit_label_path(label), 
+            edit_session_label_path(@app_session, label), 
             class: "grey-text blue-hover"%>
         <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
-            label, method: :delete, 
+            [@app_session, label], 
+            method: :delete, 
             class: "grey-text red-hover", 
             data: { confirm: 'Are you sure?' } %>
       </div>

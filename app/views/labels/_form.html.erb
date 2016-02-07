@@ -1,5 +1,5 @@
 <div class="row">
-  <%= form_for(@label) do|f| %>
+  <%= form_for [@app_session, @label] do|f| %>
     <% if @label.errors.any? %>
       <div class="col s10">
         <div id="error_explanation" class="card-panel red accent-1 white-text">
@@ -34,7 +34,7 @@
 
     <div class="actions right">
       <%= link_to raw("<i class=\"material-icons\">reply</i>"), 
-        labels_path,
+        session_labels_path(@app_session),
         class: "btn-floating btn-large waves-effect waves-circle waves-light light-green" %>
       &nbsp;
 

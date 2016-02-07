@@ -1,12 +1,14 @@
 class LabelsController < ApplicationController
   include ErrandsHelper
 
+  before_action :get_app_session
+  before_action :get_all_labels, if: Proc.new{|c| request.get?}
   before_action :set_label, only: [:show, :edit, :update, :destroy]
 
   # GET /labels
   # GET /labels.json
   def index
-    @labels = Label.all
+    @labels = @app_session.labels
   end
 
   # GET /labels/1
@@ -21,7 +23,7 @@ class LabelsController < ApplicationController
 
   # GET /labels/new
   def new
-    @label = Label.new
+    @label = @app_session.labels.new
   end
 
   # GET /labels/1/edit
@@ -31,11 +33,12 @@ class LabelsController < ApplicationController
   # POST /labels
   # POST /labels.json
   def create
-    @label = Label.new(label_params)
+
+    @label = @app_session.labels.new(label_params)
 
     respond_to do |format|
       if @label.save
-        format.html { redirect_to labels_url, notice: 'Label added' }
+        format.html { redirect_to session_labels_url(@app_session), notice: 'Label added' }
         format.json { render :show, status: :created, location: @label }
       else
         # POST usually excludes labels
@@ -51,7 +54,7 @@ class LabelsController < ApplicationController
   def update
     respond_to do |format|
       if @label.update(label_params)
-        format.html { redirect_to labels_url, notice: 'Label updated' }
+        format.html { redirect_to session_labels_url(@app_session), notice: 'Label updated' }
         format.json { render :show, status: :ok, location: @label }
       else
         # POST usually excludes labels
@@ -67,7 +70,7 @@ class LabelsController < ApplicationController
   def destroy
     @label.destroy
     respond_to do |format|
-      format.html { redirect_to labels_url, notice: 'Label deleted' }
+      format.html { redirect_to session_labels_url(@app_session), notice: 'Label deleted' }
       format.json { head :no_content }
     end
   end
@@ -75,11 +78,15 @@ class LabelsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_label
-      @label = Label.find(params[:id])
+      @label = @app_session.labels.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def label_params
       params.require(:label).permit(:name, :description)
+    end
+
+    def get_app_session
+      @app_session = Session.find(params[:session_id])
     end
 end
