@@ -9,18 +9,7 @@
 
 <br />
 
-<nav>
-  <div class="nav-wrapper green lighten-1">
-    <!-- form targets current page -->
-    <%= form_tag nil, method: :get do %>
-      <div class="input-field">
-        <%= search_field_tag :search_term, nil, value: @search_term%>
-        <%= label_tag :search_term, raw("<i class=\"material-icons\">search</i>") %>
-        <i class="material-icons">close</i>
-      </div>
-    <% end %>
-  </div>
-</nav>
+<%= render 'errands/searchbar' %>
 
 <br />
 
@@ -34,12 +23,12 @@
     <br />
     
     <div class="collapsible-body borderless">
-      <ul class="collapsible popout collection" data-collapsible="accordion">
-        <% if @errands and @errands.empty? %>
-          <div class="card-panel green lighten-3 center-align">
-            You have no TODO tasks yet.
-          </div>
-        <% else %>
+      <% if @errands and @errands.empty? %>
+        <div class="card-panel green lighten-3 center-align">
+          You have no TODO tasks yet.
+        </div>
+      <% else %>
+        <ul class="collapsible popout collection" data-collapsible="accordion">
           <% @errands.each do|errand| %>
             <%  case errand.status
                 when :late
@@ -107,8 +96,8 @@
               </div>
             </li>
           <% end %>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
     </div>
 
     <br />
@@ -119,13 +108,14 @@
       <i class="material-icons">arrow_drop_down</i>
       <h5>Completed TODOs</h5>
     </a>
+    <br />
     <div class="collapsible-body borderless">
-      <ul class="collapsible popout collection" data-collapsible="accordion">
-        <% if @errands_done and @errands_done.empty? %>
-          <div class="card-panel grey lighten-2 center-align">
-            You have no completed TODOs.
-          </div>
-        <% else %>
+      <% if @errands_done and @errands_done.empty? %>
+        <div class="card-panel grey lighten-2 center-align">
+          You have no completed TODOs.
+        </div>
+      <% else %>
+        <ul class="collapsible popout collection" data-collapsible="accordion">
           <% @errands_done.each do|errand| %>
 
             <li class="collection-item avatar grey-back">
@@ -178,8 +168,8 @@
               </div>
             </li>
           <% end %>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
     </div>
   </li>
 </ul>
