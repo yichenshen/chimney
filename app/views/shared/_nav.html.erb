@@ -12,38 +12,7 @@
       </li>
 		</ul>
 
-    <ul id="slide-out" class="side-nav collapsible">
-      <li>
-      <%= link_to raw("<i class=\"material-icons left\">assignment</i><b>TODOs</b>"), 
-          session_errands_path(@app_session),
-          class: "waves-effect waves-teal" %>
-      </li>
+    <%= render 'shared/sidebar' %>  
 
-      <li><div class="divider"></div></li>
-        
-      <li class="no-padding">
-        <ul class="collapsible collapsible-accordion">
-          <li>
-            <a class="collapsible-header">Labels<i class="material-icons">arrow_drop_down</i></a>
-            <div class="collapsible-body">
-              <ul>
-                <li>
-                  <%= link_to raw("<i class=\"material-icons left\">dashboard</i>") + "Manage labels", 
-                      session_labels_path(@app_session) %>
-                </li>
-
-                <% @labels.each do|label| %>
-                  <li>
-                    <%= link_to raw("<i class=\"material-icons left\">label_outline</i>") + label.name,
-                                [@app_session, label],
-                                class: "waves-effect" %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
-    </ul>
 	</div>
 </nav>
