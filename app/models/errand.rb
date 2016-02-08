@@ -4,6 +4,10 @@ class Errand < ActiveRecord::Base
 
 	validates :title, presence: true, length: {maximum: 100}
 
+    scope :not_done, -> {where(done: false)}
+    scope :due, ->{not_done.where.not(deadline: nil).order(:deadline, :created_at)}
+    scope :no_due, -> {not_done.where(deadline: nil).order(:created_at)}
+    scope :done, -> {where(done: true).order(:created_at)}
     scope :match_string, ->(term) { where("title LIKE (?) OR content LIKE (?)", "%" + term + "%", "%" + term + "%")}
 
 	attr_accessor :status

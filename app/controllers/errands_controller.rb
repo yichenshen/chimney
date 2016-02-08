@@ -13,8 +13,8 @@ class ErrandsController < ApplicationController
     @search_term = params[:search_term]
     errand_list = @search_term ? @app_session.errands.match_string(@search_term) : @app_session.errands
 
-    @errands = ordered_errand_list(errand_list)
-    @errands_done = completed_errands(errand_list)
+    @errands = errand_list.due + errand_list.no_due
+    @errands_done = errand_list.done
 
     set_display_properties(@errands)
     set_display_properties(@errands_done)
