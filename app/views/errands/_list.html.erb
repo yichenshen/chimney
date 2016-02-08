@@ -29,78 +29,13 @@
         </div>
       <% else %>
         <ul class="collapsible popout collection" data-collapsible="accordion">
-          <% @errands.each do|errand| %>
-            <%  case errand.status
-                when :late
-                  color = "red"
-                  text = "red-text"
-                  icon = "assignment_late"
-                when :due_today
-                  color = "orange"
-                  text = "orange-text"
-                  icon = "assignment"
-                else
-                  color = "green"
-                  text = "grey-text"
-                  icon = "assignment"
-                end
-            %>
-
-            <li class="collection-item avatar <%= color +"-back" %>">
-
-              <i class="material-icons circle <%= color %> lighten-1"><%= icon =%></i>
-            
-              <div class="collapsible-header">
-                <div class="right">
-                  <%= link_to raw("<i class=\"small material-icons\">create</i>"),
-                      edit_session_errand_path(@app_session, errand),
-                      class: "grey-text blue-hover" %>
-                  <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
-                      [@app_session, errand, {label: (@label ? @label.id : nil)}], 
-                      method: :delete, 
-                      data: { confirm: 'Are you sure?' },
-                      class: "grey-text red-hover" %>
-                  <%= link_to raw("<i class=\"small material-icons\">done</i>"), 
-                      toggle_session_errand_path(@app_session, errand, {label: (@label ? @label.id : nil)}), 
-                      method: :patch, 
-                      class: "grey-text green-hover" %>
-                </div>      
-
-                <span class="title">
-                  <%= errand.title %>
-                </span>
-
-                <% if errand.deadline %>
-                  <div class="text-darken-2 <%= text %>">
-                    Due:  <%= errand.deadline.strftime("%-d %B, %Y") %>
-                  </div>
-                <% end %>
-              </div>
-            
-              <div class="collapsible-body">
-                <p class="row">
-                  <%= errand.content %>
-                </p>
-                
-                <% if errand.labels and !errand.labels.empty?%>
-                  <div class="divider <%= color %> darken-3"></div>
-                  <br />
-
-                  <% errand.labels.each do |label| %>
-                    <span class="icon-chip light-blue lighten-3">
-                    <i class="material-icons blue-text text-darken-2">label</i>
-                    <%= label.name %>
-                    </span>
-                  <% end %>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
+          <%= render @errands %>
         </ul>
       <% end %>
     </div>
 
     <br />
+    
   </li>
 
   <li>
