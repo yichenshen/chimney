@@ -11,9 +11,12 @@
     <% if cookies[:current_app_session_id] != @app_session.id.to_s %>
         <span class="green-text text-lighten-5">
             <i class="tiny material-icons">info_outline</i>
-            The current TODO is not your default. Click 
+            The current TODO is not your 
+            <%= link_to raw('<u>default</u>'), root_path , class:"blue-text text-accent-2" %>
+            . Click 
             <a class="blue-text text-accent-2 modal-trigger" href="#confirmModal" ><u>here</u></a> 
             to set it as your default.
+            <br />            
         </span>
 
         <div id="confirmModal" class="modal red lighten-4">
