@@ -3,18 +3,42 @@
       color = "red"
       text = "red-text"
       icon = "assignment_late"
+      toggle_icon = "done"
+      toggle_hover = "green-hover"
+      due = "Due: "
+      label_color = "light-blue"
+      label_text_color = "blue-text"
     when :due_today
       color = "orange"
       text = "orange-text"
       icon = "assignment"
+      toggle_icon = "done"
+      toggle_hover = "green-hover"
+      due = "Due: "
+      label_color = "light-blue"
+      label_text_color = "blue-text"
+    when :done
+      color = "grey"
+      text = "grey-text"
+      icon = "assignment_turned_in"
+      toggle_icon = "undo"
+      toggle_hover = "orange-hover"
+      due = "Was due: "
+      label_color = "blue-grey"
+      label_text_color = "blue-grey-text"
     else
       color = "green"
       text = "grey-text"
       icon = "assignment"
+      toggle_icon = "done"
+      toggle_hover = "green-hover"
+      due = "Due: "
+      label_color = "light-blue"
+      label_text_color = "blue-text"
     end
 %>
 
-<li class="collection-item avatar <%= color +"-back" %>">
+<li class="collection-item avatar <%= color + "-back" %>">
 
   <i class="material-icons circle <%= color %> lighten-1"><%= icon =%></i>
 
@@ -28,10 +52,10 @@
           method: :delete, 
           data: { confirm: 'Are you sure?' },
           class: "grey-text red-hover" %>
-      <%= link_to raw("<i class=\"small material-icons\">done</i>"), 
+      <%= link_to raw("<i class=\"small material-icons\">" + toggle_icon + "</i>"), 
           toggle_session_errand_path(@app_session, errand, {label: (@label ? @label.id : nil)}), 
           method: :patch, 
-          class: "grey-text green-hover" %>
+          class: "grey-text " + toggle_hover %>
     </div>      
 
     <span class="title">
@@ -40,7 +64,7 @@
 
     <% if errand.deadline %>
       <div class="text-darken-2 <%= text %>">
-        Due:  <%= errand.deadline.strftime("%-d %B, %Y") %>
+        <%= due + errand.deadline.strftime("%-d %B, %Y") %>
       </div>
     <% end %>
   </div>
@@ -55,8 +79,8 @@
       <br />
 
       <% errand.labels.each do |label| %>
-        <span class="icon-chip light-blue lighten-3">
-        <i class="material-icons blue-text text-darken-2">label</i>
+        <span class="icon-chip <%= label_color %> lighten-3">
+        <i class="material-icons <%= label_text_color %> text-darken-2">label</i>
         <%= label.name %>
         </span>
       <% end %>
