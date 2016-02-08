@@ -100,3 +100,7 @@ The front-end makes use of the Materialize CSS framework, based on the Material 
 #### Colors
 
 The front-end shows TODOs with different colors based on their state (overdue, not due, completed, etc...). It reads from a virtual attribute in Errands and assigns the color based on the attribute.
+
+## License
+
+This app is licensed under the MIT license. Refer to the license file for details.
