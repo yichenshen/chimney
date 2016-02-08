@@ -5,9 +5,7 @@ module ErrandsHelper
 		  	if !e.content or e.content.empty?
                 e.content = "[No content]"
 			end
-
-		  	e.set_status 
 		end
 	end
-
+    
 end

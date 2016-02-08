@@ -10,17 +10,23 @@ class Errand < ActiveRecord::Base
     scope :done, -> {where(done: true).order(:created_at)}
     scope :match_string, ->(term) { where("title LIKE (?) OR content LIKE (?)", "%" + term + "%", "%" + term + "%")}
 
-	attr_accessor :status
+    attr_accessor :status
 
-	def toggle_state
-		self.done = !self.done
-	end
+    after_initialize :set_status
 
-	def set_status
-		if self.deadline and self.deadline < Date.today
-        	self.status = :late
-      	elsif self.deadline and self.deadline == Date.today
-        	self.status = :due_today
-      	end
-	end
+    def toggle_state
+        self.done = !self.done
+    end
+
+    def set_status
+        if self.done 
+            self.status = :done
+        elsif self.deadline and self.deadline < Date.today
+            self.status = :late
+        elsif self.deadline and self.deadline == Date.today
+            self.status = :due_today
+        else
+            self.status = :not_due
+        end
+    end
 end
