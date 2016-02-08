@@ -41,10 +41,10 @@ When you're done, add the secret key to the production environment. You can gene
 
 > You might want to change the permissions for `database.yml` and `secrets.yml` to ensure security.
 
-Then, while ensuring that your database server is running, execute the following commands:
+Then, while ensuring that your database server is running, execute the following command:
 
 ```
-bundle exec rake assets:precompile db:create db:migrate RAILS_ENV=production
+$ bundle exec rake assets:precompile db:create db:migrate RAILS_ENV=production
 ```
 
 #### Server and URL
