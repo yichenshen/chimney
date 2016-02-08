@@ -42,7 +42,7 @@ class ErrandsController < ApplicationController
         format.json { render :show, status: :created, location: @errand }
       else
         # POST usually excludes labels
-        get_all_labels 
+        get_all_labels
         format.html { render :new }
         format.json { render json: @errand.errors, status: :unprocessable_entity }
       end
@@ -58,7 +58,7 @@ class ErrandsController < ApplicationController
         format.json { render :show, status: :ok, location: @errand }
       else
         # POST usually excludes labels
-        get_all_labels 
+        get_all_labels
         format.html { render :edit }
         format.json { render json: @errand.errors, status: :unprocessable_entity }
       end
@@ -103,7 +103,7 @@ class ErrandsController < ApplicationController
           format.json { render :show, status: :ok, location: @errand }
       else
         # POST usually excludes labels
-        get_all_labels 
+        get_all_labels
         format.html { redirect_to session_errands_url(@app_session), notice: 'Error marking TODO, try again later' }
         format.json { render json: @errand.errors, status: :unprocessable_entity }
       end

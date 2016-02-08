@@ -28,8 +28,8 @@
     </div>
 
     <div class="input-field col s12">
-      <%= f.date_field  :deadline, 
-                        class: "datepicker", 
+      <%= f.date_field  :deadline,
+                        class: "datepicker",
                         value: @errand.deadline ? @errand.deadline.strftime("%-d %B, %Y"):nil %>
       <%= f.label :deadline, class: "active" %>
     </div>
@@ -60,10 +60,10 @@
           </div>
         </li>
       </ul>
-    </div>   
+    </div>
 
     <div class="actions right">
-      <%= link_to raw("<i class=\"material-icons\">reply</i>"), 
+      <%= link_to raw("<i class=\"material-icons\">reply</i>"),
         session_errands_path(@app_session),
         class: "btn-floating btn-large waves-effect waves-circle waves-light light-green" %>
       &nbsp;

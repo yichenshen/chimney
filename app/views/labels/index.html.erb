@@ -21,18 +21,17 @@
         <div class="secondary-content">
           <%= link_to raw("<i class=\"small material-icons\">view_list</i>"),
               [@app_session, label],
-              class: "grey-text blue-hover"%>    
-          <%= link_to raw("<i class=\"small material-icons\">mode_edit</i>"),
-              edit_session_label_path(@app_session, label), 
               class: "grey-text blue-hover"%>
-          <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
-              [@app_session, label], 
-              method: :delete, 
-              class: "grey-text red-hover", 
+          <%= link_to raw("<i class=\"small material-icons\">mode_edit</i>"),
+              edit_session_label_path(@app_session, label),
+              class: "grey-text blue-hover"%>
+          <%= link_to raw("<i class=\"small material-icons\">delete</i>"),
+              [@app_session, label],
+              method: :delete,
+              class: "grey-text red-hover",
               data: { confirm: 'Are you sure?' } %>
         </div>
       </li>
     <% end %>
   </ul>
 <% end %>
-

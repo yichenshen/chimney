@@ -2,21 +2,21 @@
 <p class="grey-text text-lighten-4">
     To save your TODO, simply copy the link below:
     <div class="input-field">
-      <input    disabled 
-                value="<%= session_url(@app_session) %>" 
-                id="save-link" 
-                type="text" 
+      <input    disabled
+                value="<%= session_url(@app_session) %>"
+                id="save-link"
+                type="text"
                 class="validate">
     </div>
     <% if cookies[:current_app_session_id] != @app_session.id.to_s %>
         <span class="green-text text-lighten-5">
             <i class="tiny material-icons">info_outline</i>
-            The current TODO is not your 
+            The current TODO is not your
             <%= link_to raw('<u>default</u>'), root_path , class:"blue-text text-accent-2" %>
-            . Click 
-            <a class="blue-text text-accent-2 modal-trigger" href="#confirmModal" ><u>here</u></a> 
+            . Click
+            <a class="blue-text text-accent-2 modal-trigger" href="#confirmModal" ><u>here</u></a>
             to set it as your default.
-            <br />            
+            <br />
         </span>
 
         <div id="confirmModal" class="modal red lighten-4">

@@ -1,6 +1,6 @@
 <div>
-  <%= link_to raw("<i class=\"material-icons\">add</i>"), 
-              new_session_errand_path(@app_session), 
+  <%= link_to raw("<i class=\"material-icons\">add</i>"),
+              new_session_errand_path(@app_session),
               class: "btn-floating btn-large waves-effect waves-circle waves-light green lighten-1 right" %>
   <h3>
     <%= (@label? @label.name : "TODOs") %>
@@ -19,9 +19,9 @@
       <i class="material-icons">arrow_drop_down</i>
       <h5>Pending TODOs</h5>
     </a>
-    
+
     <br />
-    
+
     <div class="collapsible-body borderless">
       <% if @errands and @errands.empty? %>
         <div class="card-panel green lighten-3 center-align">
@@ -44,7 +44,7 @@
     </a>
 
     <br />
-    
+
     <div class="collapsible-body borderless">
       <% if @errands_done and @errands_done.empty? %>
         <div class="card-panel grey lighten-2 center-align">
@@ -52,7 +52,7 @@
         </div>
       <% else %>
         <ul class="collapsible popout collection" data-collapsible="accordion">
-          <%= render @errands_done %>         
+          <%= render @errands_done %>
         </ul>
       <% end %>
     </div>

@@ -47,16 +47,16 @@
       <%= link_to raw("<i class=\"small material-icons\">create</i>"),
           edit_session_errand_path(@app_session, errand),
           class: "grey-text blue-hover" %>
-      <%= link_to raw("<i class=\"small material-icons\">delete</i>"), 
-          [@app_session, errand, {label: (@label ? @label.id : nil)}], 
-          method: :delete, 
+      <%= link_to raw("<i class=\"small material-icons\">delete</i>"),
+          [@app_session, errand, {label: (@label ? @label.id : nil)}],
+          method: :delete,
           data: { confirm: 'Are you sure?' },
           class: "grey-text red-hover" %>
-      <%= link_to raw("<i class=\"small material-icons\">" + toggle_icon + "</i>"), 
-          toggle_session_errand_path(@app_session, errand, {label: (@label ? @label.id : nil)}), 
-          method: :patch, 
+      <%= link_to raw("<i class=\"small material-icons\">" + toggle_icon + "</i>"),
+          toggle_session_errand_path(@app_session, errand, {label: (@label ? @label.id : nil)}),
+          method: :patch,
           class: "grey-text " + toggle_hover %>
-    </div>      
+    </div>
 
     <span class="title">
       <%= errand.title %>
@@ -73,7 +73,7 @@
     <p class="row">
       <%= !errand.content or errand.content.empty? ? "[No Content]" : errand.content %>
     </p>
-    
+
     <% if errand.labels and !errand.labels.empty?%>
       <div class="divider <%= color %> darken-3"></div>
       <br />

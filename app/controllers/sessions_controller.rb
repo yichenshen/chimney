@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
-  
+
   # GET /sessions
   # Assigns a session if not present. Redirects to main page otherwise
   def index
     respond_to do |format|
         @app_session = Session.find_by_id(cookies[:current_app_session_id])
-        
+
         if @app_session
             format.html{redirect_to session_errands_url(@app_session)}
         else

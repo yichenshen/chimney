@@ -43,13 +43,13 @@ main {
 .green-hover{
 	&:hover{
 		@extend .green-text;
-	}	
+	}
 }
 
 .orange-hover{
     &:hover{
         @extend .orange-text;
-    }   
+    }
 }
 
 .row-no-margin{

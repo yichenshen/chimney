@@ -19,7 +19,7 @@ class Errand < ActiveRecord::Base
     end
 
     def set_status
-        if self.done 
+        if self.done
             self.status = :done
         elsif self.deadline and self.deadline < Date.today
             self.status = :late
