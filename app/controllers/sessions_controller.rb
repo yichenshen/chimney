@@ -4,13 +4,13 @@ class SessionsController < ApplicationController
   # Assigns a session if not present. Redirects to main page otherwise
   def index
     respond_to do |format|
-        @app_session = Session.find_by_id(session[:current_app_session_id])
+        @app_session = Session.find_by_id(cookies[:current_app_session_id])
         
         if @app_session
             format.html{redirect_to session_errands_url(@app_session)}
         else
             @app_session = new_app_session
-            session[:current_app_session_id] = @app_session.id
+            cookies[:current_app_session_id] = @app_session.id
             format.html{redirect_to session_errands_url(@app_session)}
         end
     end
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
   # Sets the default app session
   def setsession
     @app_session = Session.find(params[:id])
-    session[:current_app_session_id] = @app_session.id
+    cookies[:current_app_session_id] = @app_session.id
 
     respond_to do |format|
         format.html{redirect_to session_errands_url(@app_session)}
