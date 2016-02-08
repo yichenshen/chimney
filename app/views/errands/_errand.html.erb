@@ -71,7 +71,7 @@
 
   <div class="collapsible-body">
     <p class="row">
-      <%= errand.content %>
+      <%= !errand.content or errand.content.empty? ? "[No Content]" : errand.content %>
     </p>
     
     <% if errand.labels and !errand.labels.empty?%>

@@ -19,9 +19,6 @@ class LabelsController < ApplicationController
 
     @errands = errand_list.due + errand_list.no_due
     @errands_done = errand_list.done
-
-    set_display_properties(@errands)
-    set_display_properties(@errands_done)
   end
 
   # GET /labels/new
