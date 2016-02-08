@@ -19,7 +19,7 @@ class LabelsController < ApplicationController
 
     @errands = errand_list.due + errand_list.no_due
     @errands_done = errand_list.done
-    
+
     set_display_properties(@errands)
     set_display_properties(@errands_done)
   end
@@ -87,10 +87,5 @@ class LabelsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def label_params
       params.require(:label).permit(:name, :description)
-    end
-
-    def get_app_session
-      @app_session = Session.find(params[:session_id])
-      @app_session.update_access_time
     end
 end

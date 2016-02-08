@@ -124,9 +124,4 @@ class ErrandsController < ApplicationController
       params[:errand][:label_ids] ||= []
       params.require(:errand).permit(:title, :content, :deadline ,label_ids: [])
     end
-
-    def get_app_session
-      @app_session = Session.find(params[:session_id])
-      @app_session.update_access_time
-    end
 end
