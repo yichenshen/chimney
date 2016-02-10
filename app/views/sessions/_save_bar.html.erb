@@ -8,7 +8,7 @@
                 type="text"
                 class="validate">
     </div>
-    <% if cookies[:current_app_session_id] != @app_session.id.to_s %>
+    <% if cookies[:current_app_session_id] != @app_session.id %>
         <span class="green-text text-lighten-5">
             <i class="tiny material-icons">info_outline</i>
             The current TODO is not your

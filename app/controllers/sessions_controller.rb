@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
             format.html{redirect_to session_errands_url(@app_session)}
         else
             @app_session = new_app_session
-            cookies[:current_app_session_id] = @app_session.id
+            cookies[:current_app_session_id] = {:value => @app_session.id, :expires => 1.month.from_now}
             format.html{redirect_to session_errands_url(@app_session)}
         end
     end
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
   # Sets the default app session
   def setsession
     @app_session = Session.find(params[:id])
-    cookies[:current_app_session_id] = @app_session.id
+    cookies[:current_app_session_id] = {:value => @app_session.id, :expires => 1.month.from_now }
 
     respond_to do |format|
         format.html{redirect_to session_errands_url(@app_session)}

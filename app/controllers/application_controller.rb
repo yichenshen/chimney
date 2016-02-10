@@ -13,5 +13,10 @@ class ApplicationController < ActionController::Base
     def get_app_session
       @app_session = Session.find(params[:session_id])
       @app_session.update_access_time
+
+      # Cookie when first retrived is a string
+      if cookies[:current_app_session_id] == @app_session.id.to_s
+          cookies[:current_app_session_id] = {:value => @app_session.id, :expires => 1.month.from_now}
+      end
     end
 end
